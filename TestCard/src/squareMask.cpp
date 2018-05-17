@@ -15,7 +15,6 @@ void squareMask::update(vector <ofRectangle> s)
 {
 	//posIndex = ofRandom(s.size());
 	colour.setBrightness(i--);
-	
 }
 
 void squareMask::draw(vector <ofRectangle> s)
@@ -23,7 +22,6 @@ void squareMask::draw(vector <ofRectangle> s)
 	ofSetColor(colour);
 	//if (ofGetFrameNum() % 5 == 0)
 	ofDrawRectangle(s[posIndex]);
-	
 }
 
 

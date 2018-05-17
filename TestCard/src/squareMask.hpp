@@ -9,10 +9,14 @@ public:
 	void update(vector <ofRectangle> s);
 	void draw(vector <ofRectangle> s);
 	void refresh(vector <ofRectangle> s);
+
 	int posIndex;
+
 	ofColor colour;
+
 	float i;
+
 	squareMask();
-	// a comment
+
 };
 
