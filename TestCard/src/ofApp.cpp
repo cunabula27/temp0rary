@@ -4,7 +4,7 @@
 void ofApp::setup(){
 
 	ofSetBackgroundColor(0);
-	ofSetLineWidth(2);
+	ofSetLineWidth(1);
 	ofSetFrameRate(60);			// set framerate limit to 60 FPS
 	
 	for (int y = 0; y < ofGetHeight() + 1; y = y + 100) {
@@ -20,16 +20,18 @@ void ofApp::setup(){
 			squares.push_back(a);
 		}
 	}
-	firstsquare.setup(squares);
-	firstsquare2.setup(squares);
-	firstsquare3.setup(squares);
+	for (int i = 0; i < NSQUARES; i++)
+	{
+		groupOfSquares[i].setup(squares);
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	firstsquare.update(squares);
-	firstsquare2.update(squares);
-	firstsquare3.update(squares);
+	for (int i = 0; i < NSQUARES; i++)
+	{
+		groupOfSquares[i].update(squares);
+	}
 }
 
 //--------------------------------------------------------------
@@ -39,9 +41,10 @@ void ofApp::draw(){
 
 	ofSetColor(150);	// set colour
 
-	firstsquare.draw(squares);
-	firstsquare2.draw(squares);
-	firstsquare3.draw(squares);
+	for (int i = 0; i < NSQUARES; i++)
+	{
+		groupOfSquares[i].draw(squares);
+	}
 
 	//if (ofGetFrameNum() % 20 == 0)						// slow down squares firing
 	//{
@@ -49,30 +52,33 @@ void ofApp::draw(){
 	//	ofDrawRectangle(squares[b]);
 	//}
 
-	ofSetColor(50);										// set colour
+											// set colour
 
 	for (int i = 0; i < coords_100.size(); i++)			// draw ticks code starts
 	{
+		ofSetColor(50);
 		auto pos = coords_100[i];
 		ofDrawLine(pos.x - 6, pos.y, pos.x + 6, pos.y);
 		ofDrawLine(pos.x, pos.y - 6, pos.x, pos.y + 6);
 	}													// draw ticks code ends
 
-	ofSetColor(250);									// set colour
+										// set colour
 	
 	ofPushMatrix();										// inner dial
 	for (int r = 0; r < j; r++)
 	{
+		ofSetColor(250);
 		ofDrawLine(150, 0, 190, 0);
 		ofRotateDeg(7.5);
 	}
 	ofPopMatrix();
 
-	ofSetColor(200);									// set colour
+										// set colour
 
 	ofPushMatrix();										// outer dial
 	for (int r = 0; r < i; r++)
 	{
+		ofSetColor(200);
 		ofDrawLine(210, 0, 240, 0);
 		ofRotateDeg(7.5);
 	}
@@ -122,6 +128,14 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
 
+	if (button==0)
+	{
+		for (int i = 0; i < NSQUARES; i++)
+		{
+			groupOfSquares[i].setup(squares);
+		}
+	}
+	
 }
 
 //--------------------------------------------------------------

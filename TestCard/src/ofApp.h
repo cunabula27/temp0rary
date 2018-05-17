@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #include "squareMask.hpp"
 
+#define NSQUARES 60
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -27,8 +29,6 @@ class ofApp : public ofBaseApp{
 		vector <glm::vec3> coords_100;
 		vector <ofRectangle> squares;
 
-		squareMask firstsquare;
-		squareMask firstsquare2;
-		squareMask firstsquare3;
+		squareMask groupOfSquares[NSQUARES];
 		
 };
