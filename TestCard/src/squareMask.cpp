@@ -13,8 +13,8 @@ void squareMask::setup(vector <ofRectangle> s)
 
 void squareMask::update(vector <ofRectangle> s)
 {
-	//posIndex = ofRandom(s.size());
-	colour.setBrightness(i--);
+	i = i - 2;
+	colour.setBrightness(i);
 }
 
 void squareMask::draw(vector <ofRectangle> s)
