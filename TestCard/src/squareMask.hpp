@@ -13,6 +13,6 @@ public:
 	ofColor color;
 
 	squareMask();
-
+	// a comment
 };
 
