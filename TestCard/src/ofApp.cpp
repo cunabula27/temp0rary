@@ -25,6 +25,7 @@ void ofApp::setup(){
 	{
 		groupOfSquares[i].setup(squares);
 	}
+	fbo.allocate(ofGetWidth(), ofGetHeight());
 }
 
 //--------------------------------------------------------------
@@ -34,11 +35,12 @@ void ofApp::update(){
 	{
 		groupOfSquares[i].update(squares);
 	}
+	spout.sendTexture(fbo.getTexture(), "composition");
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	
+	fbo.begin();
 	ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
 
 	
@@ -73,7 +75,11 @@ void ofApp::draw(){
 			ofRotateDeg(7.5);
 		}
 	ofPopMatrix();
-
+	fbo.end();
+	fbo.draw(0, 0);
+}
+void ofApp::exit() {
+	spout.exit();
 }
 
 //--------------------------------------------------------------

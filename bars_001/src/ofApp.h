@@ -1,10 +1,11 @@
 #pragma once
 
 #include "ofMain.h"
-#include "squareMask.hpp"
+#include "Bar_Line.hpp"
+#include "Bar_Rect.hpp"
 #include "ofxSpout2Sender.h"
 
-#define NSQUARES 60
+#define NBARS 30
 
 class ofApp : public ofBaseApp{
 
@@ -26,15 +27,15 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+
+		Bar_Line groupOfBarsL[NBARS];
 		
-		int i, j = 0;
+		Bar_Rect groupOfBarsR[NBARS];
 
-		vector <glm::vec3> coords_100;
-		vector <ofRectangle> squares;
-
-		squareMask groupOfSquares[NSQUARES];
+		float y;
+		float depth;
+		//bool doSaveScreen;
 
 		ofFbo fbo;
 		ofxSpout2::Sender spout;
-		
 };

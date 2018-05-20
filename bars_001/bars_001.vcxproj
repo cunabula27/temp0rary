@@ -26,7 +26,7 @@
 	<PropertyGroup Label="Globals">
 		<ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
 		<Keyword>Win32Proj</Keyword>
-		<RootNamespace>TestCard</RootNamespace>
+		<RootNamespace>bars_001</RootNamespace>
 	</PropertyGroup>
 	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -182,7 +182,8 @@
 	<ItemGroup>
 		<ClCompile Include="src\main.cpp" />
 		<ClCompile Include="src\ofApp.cpp" />
-		<ClCompile Include="src\squareMask.cpp" />
+		<ClCompile Include="src\Bar_Line.cpp" />
+		<ClCompile Include="src\Bar_Rect.cpp" />
 		<ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.cpp" />
 		<ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.cpp" />
 		<ClCompile Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.cpp" />
@@ -205,7 +206,8 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ClInclude Include="src\ofApp.h" />
-		<ClInclude Include="src\squareMask.hpp" />
+		<ClInclude Include="src\Bar_Line.hpp" />
+		<ClInclude Include="src\Bar_Rect.hpp" />
 		<ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.h" />
 		<ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.h" />
 		<ClInclude Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.h" />

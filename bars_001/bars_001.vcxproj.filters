@@ -7,13 +7,16 @@
 		<ClCompile Include="src\main.cpp">
 			<Filter>src</Filter>
 		</ClCompile>
+		<ClCompile Include="src\Bar_Line.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\Bar_Rect.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
 		<ClCompile Include="src\main.cpp">
 			<Filter>src</Filter>
 		</ClCompile>
 		<ClCompile Include="src\ofApp.cpp">
-			<Filter>src</Filter>
-		</ClCompile>
-		<ClCompile Include="src\squareMask.cpp">
 			<Filter>src</Filter>
 		</ClCompile>
 		<ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.cpp">
@@ -116,10 +119,13 @@
 		<ClInclude Include="src\ofApp.h">
 			<Filter>src</Filter>
 		</ClInclude>
-		<ClInclude Include="src\ofApp.h">
+		<ClInclude Include="src\Bar_Line.hpp">
 			<Filter>src</Filter>
 		</ClInclude>
-		<ClInclude Include="src\squareMask.hpp">
+		<ClInclude Include="src\Bar_Rect.hpp">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="src\ofApp.h">
 			<Filter>src</Filter>
 		</ClInclude>
 		<ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.h">
