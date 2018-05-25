@@ -3,10 +3,11 @@
 #include "ofMain.h"
 #include "squareMask.hpp"
 #include "ofxSpout2Sender.h"
+#include "ofxMidi.h"
 
 #define NSQUARES 60
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp, public ofxMidiListener {
 
 	public:
 		void setup();
@@ -26,6 +27,11 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+
+		void newMidiMessage(ofxMidiMessage& eventArgs);
+
+		ofxMidiIn midiIn;
+		ofxMidiMessage midiMessage;
 		
 		int i, j = 0;
 

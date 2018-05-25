@@ -3,9 +3,16 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
+	ofSetLogLevel(OF_LOG_VERBOSE);
+
 	ofSetBackgroundColor(0);
 	ofSetLineWidth(2);
 	ofSetFrameRate(60);			// set framerate limit to 60 FPS
+
+	midiIn.listPorts();			// do I need this?
+	midiIn.openPort(2);			// should open VMidi 2
+	midiIn.addListener(this);	// add ofApp as a listener
+	midiIn.setVerbose(true);	// print received messages to the console
 	
 	for (int y = 0; y < ofGetHeight() + 1; y = y + 100) {
 		for (int x = 0; x < ofGetWidth() + 1; x = x + 100) {
@@ -41,9 +48,8 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	fbo.begin();
-	ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
 
-	
+	ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
 
 	for (int i = 0; i < NSQUARES; i++)
 	{
@@ -75,11 +81,30 @@ void ofApp::draw(){
 			ofRotateDeg(7.5);
 		}
 	ofPopMatrix();
+
 	fbo.end();
+
 	fbo.draw(0, 0);
 }
+
+//--------------------------------------------------------------
 void ofApp::exit() {
 	spout.exit();
+	midiIn.closePort();
+	midiIn.removeListener(this);
+}
+
+//--------------------------------------------------------------
+void ofApp::newMidiMessage(ofxMidiMessage& msg) {
+
+	midiMessage = msg;	// make a copy of the latest message
+	if (midiMessage.pitch == 48)
+	{
+		for (int i = 0; i < NSQUARES; i++)
+		{
+			groupOfSquares[i].setup(squares);
+		}
+	}
 }
 
 //--------------------------------------------------------------
@@ -102,8 +127,10 @@ void ofApp::keyPressed(int key) {
 	case 's':
 		ofSaveScreen("screengrab_" + ofGetTimestampString() + ".png");
 		break;
+	case 'l':
+		midiIn.listPorts();
+		break;
 	}
-
 }
 
 //--------------------------------------------------------------
@@ -118,13 +145,13 @@ void ofApp::mouseDragged(int x, int y, int button){}
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
 
-	if (button==0)
+	/*if (button==0)
 	{
 		for (int i = 0; i < NSQUARES; i++)
 		{
 			groupOfSquares[i].setup(squares);
 		}
-	}
+	}*/
 	
 }
 
