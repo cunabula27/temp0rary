@@ -19,7 +19,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 	
-	ofClear(0, 0, 0, 255);
+	//ofClear(0, 0, 0, 255);
 	for (int i = 0; i < NBARS; i++) 
 	{ 
 		groupOfBarsL[i].update(); 

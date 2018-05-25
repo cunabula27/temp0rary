@@ -3,16 +3,16 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-	ofSetLogLevel(OF_LOG_VERBOSE);
+	//ofSetLogLevel(OF_LOG_VERBOSE);
 
 	ofSetBackgroundColor(0);
 	ofSetLineWidth(2);
 	ofSetFrameRate(60);			// set framerate limit to 60 FPS
 
-	midiIn.listPorts();			// do I need this?
+	//midiIn.listPorts();			// do I need this?
 	midiIn.openPort(2);			// should open VMidi 2
 	midiIn.addListener(this);	// add ofApp as a listener
-	midiIn.setVerbose(true);	// print received messages to the console
+	//midiIn.setVerbose(true);	// print received messages to the console
 	
 	for (int y = 0; y < ofGetHeight() + 1; y = y + 100) {
 		for (int x = 0; x < ofGetWidth() + 1; x = x + 100) {
@@ -69,7 +69,7 @@ void ofApp::draw(){
 		{
 			ofSetColor(250);
 			ofDrawLine(150, 0, 190, 0);
-			ofRotateDeg(7.5);
+			ofRotateDeg(7/*.5*/);
 		}
 	ofPopMatrix();
 
@@ -78,7 +78,7 @@ void ofApp::draw(){
 		{
 			ofSetColor(200);
 			ofDrawLine(210, 0, 240, 0);
-			ofRotateDeg(7.5);
+			ofRotateDeg(7/*.5*/);
 		}
 	ofPopMatrix();
 
@@ -98,13 +98,25 @@ void ofApp::exit() {
 void ofApp::newMidiMessage(ofxMidiMessage& msg) {
 
 	midiMessage = msg;	// make a copy of the latest message
-	if (midiMessage.pitch == 48)
+	if (midiMessage.status == MIDI_NOTE_ON && midiMessage.pitch == 53)
 	{
 		for (int i = 0; i < NSQUARES; i++)
 		{
 			groupOfSquares[i].setup(squares);
 		}
 	}
+	
+	
+	if (midiMessage.status == MIDI_CONTROL_CHANGE && midiMessage.control == 18)
+	{
+		i=ofMap(midiMessage.value, 0, 127, 0, 48);
+	}
+	if (midiMessage.status == MIDI_CONTROL_CHANGE && midiMessage.control == 19)
+	{
+		j = ofMap(midiMessage.value, 0, 127, 0, 48);
+	}
+	
+
 }
 
 //--------------------------------------------------------------
@@ -127,9 +139,9 @@ void ofApp::keyPressed(int key) {
 	case 's':
 		ofSaveScreen("screengrab_" + ofGetTimestampString() + ".png");
 		break;
-	case 'l':
+	/*case 'l':
 		midiIn.listPorts();
-		break;
+		break;*/
 	}
 }
 
